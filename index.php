@@ -2,27 +2,28 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trang PHP Đơn Giản</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        .container { color: #333; }
-    </style>
+    <title>Form PHP Đơn Giản</title>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Chào mừng bạn đến với dự án PHP!</h1>
-        
-        <?php
-            // Logic PHP đơn giản: hiển thị lời chào theo thời gian
-            date_default_timezone_set('Asia/Ho_Chi_Minh');
-            $hour = date('H');
-            $greeting = ($hour < 12) ? "Chào buổi sáng!" : "Chào buổi chiều!";
-            
-            echo "<p><strong>" . $greeting . "</strong></p>";
-            echo "<p>Bây giờ là: " . date('H:i:s - d/m/Y') . "</p>";
-        ?>
-    </div>
+    <h1>Chào mừng!</h1>
+
+    <form method="POST" action="">
+        <label>Nhập tên của bạn:</label>
+        <input type="text" name="username" required>
+        <button type="submit" name="submit">Gửi</button>
+    </form>
+
+    <hr>
+
+    <?php
+    // Kiểm tra nếu người dùng đã nhấn nút "Gửi"
+    if (isset($_POST['submit'])) {
+        // Lấy dữ liệu từ ô nhập liệu
+        $name = htmlspecialchars($_POST['username']); 
+        echo "<h2>Xin chào, " . $name . "! Chúc bạn một ngày tốt lành.</h2>";
+    }
+    ?>
 
 </body>
 </html>
